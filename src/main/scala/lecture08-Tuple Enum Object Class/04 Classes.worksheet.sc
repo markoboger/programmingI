@@ -77,41 +77,40 @@
 
 }
 
+{
 // create a class Planet with data radius and an optional parameter density with a default value of 5.514 g/cm^3 and functions surfaceArea and circumference
-class Planet(
-    val name: String,
-    val radius: Double,
-    private val density: Double = 5.514
-) {
-  private val pi: Double = 3.14159
+  class Planet(val name: String, val radius: Double, density: Double = 5.514) {
+    private val pi: Double = 3.14159
+    def surfaceArea(): Double = 4 * pi * radius * radius
+    def circumference(): Double = 2 * pi * radius
+    private def mass(): Double = density * radius * radius * radius
+  }
+
+  val earth = new Planet("Earth", 6371.0)
+  println(earth.name)
+  println(earth.radius)
+  //println(earth.density) // does not compile
+  println(earth.surfaceArea())
+  println(earth.circumference())
+  //println(earth.mass) // does not compile
+
+}
+
+// initialize during construction
+class Planet(val name: String, val radius: Double, density: Double = 5.514) {
+  val pi: Double = 3.14159
+  var mass = 0.0
+
   def surfaceArea(): Double = 4 * pi * radius * radius
-  def circumference(): Double = 2 * pi * radius
-  private def mass(): Double = density * radius * radius * radius
+  def init(): Unit = {
+    mass = density * radius * radius * radius
+  }
+  init()
+
 }
 
 val earth = new Planet("Earth", 6371.0)
 println(earth.name)
 println(earth.radius)
 println(earth.surfaceArea())
-println(earth.circumference())
-
-{
-// initialize during construction
-  class Planet(val name: String, val radius: Double, density: Double = 5.514) {
-    val pi: Double = 3.14159
-    var mass = 0.0
-
-    def surfaceArea(): Double = 4 * pi * radius * radius
-    def init(): Unit = {
-      mass = density * radius * radius * radius
-    }
-    init()
-
-  }
-
-  val earth = new Planet("Earth", 6371.0)
-  println(earth.name)
-  println(earth.radius)
-  println(earth.surfaceArea())
-  println(earth.mass)
-}
+println(earth.mass)
