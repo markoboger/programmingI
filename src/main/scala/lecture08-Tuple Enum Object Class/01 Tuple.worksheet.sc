@@ -39,6 +39,9 @@ tuple._1
 tuple._2
 tuple._3
 
+tuple(0)
+tuple(1)
+
 // create a function for integer division that returns a tuple of the quotient and the remainder
 def div(x: Int, y: Int): (Int, Int) = (x / y, x % y)
 
