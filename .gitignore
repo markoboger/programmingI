@@ -15,3 +15,7 @@ target/
 .metals
 .bloop
 metals.sbt
+# Scala CLI / Mill / BSP build artefacts
+.bsp/
+.scala-build/
+out/
