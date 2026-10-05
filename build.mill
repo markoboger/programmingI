@@ -1,0 +1,15 @@
+// Mill build for Programming I Lecture 05 EnergyBill example
+package build
+import mill.*, scalalib.*
+
+object energyBill extends ScalaModule {
+  def scalaVersion = "3.9.0"
+  def mainClass = Some("EnergyBill$package")
+
+  // Module root = lecture folder; .scala files live directly there (no symlinks)
+  override def moduleDir =
+    super.moduleDir / os.up / "src" / "main" / "scala" / "lecture05-Number Types"
+
+  // Default would look for moduleDir/src — point at moduleDir itself
+  def sources = Task.Sources(moduleDir)
+}
